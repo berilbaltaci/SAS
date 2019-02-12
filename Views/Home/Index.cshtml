@@ -1,0 +1,27 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_Layout";
+}
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+    </tr>
+    @foreach (var item in ViewBag.std)
+    {
+        <tr>
+            <td>@item.Name</td>
+        </tr>
+    }
+</table>
+@{
+    var user = HttpContextAccessor.HttpContext.Session.GetObject<User>("user");
+    
+}
+@user.UserId
+@user.Name
+<hr>
